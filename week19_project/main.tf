@@ -1,0 +1,2 @@
+source: aws
+provider: aws
