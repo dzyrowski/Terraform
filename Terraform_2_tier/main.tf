@@ -70,7 +70,7 @@ resource "aws_route_table" "publicrt" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.week19IG.id
   }
-  tags = {
+    tags = {
     Name = "publicrt"
   }
 }
@@ -109,7 +109,7 @@ resource "aws_security_group" "vpc-sg" {
   }
 
   tags = {
-    Name = "vpc-sg"
+    Name = "vpc-sg"  
   }
 }
 
