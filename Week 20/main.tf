@@ -18,18 +18,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# #Pull Centos image from Docker registry
-# resource "docker_image" "centos" {
-#   name = "centos:latest"
-# }
-
-# #Start a container
-# resource "docker_container" "centos" {
-#   name  = "centos_container"
-#   image = docker_image.centos.latest
-# }
-
-
 #Create VPC
 resource "aws_vpc" "w20_vpc" {
   cidr_block = "10.0.0.0/16"
@@ -38,7 +26,7 @@ resource "aws_vpc" "w20_vpc" {
   }
 }
 
-#Create 2 private subnet
+#Create subnets
 resource "aws_subnet" "w20_privatesub1" {
   vpc_id     = aws_vpc.w20_vpc.id
   cidr_block = "10.0.1.0/24"
@@ -47,15 +35,6 @@ resource "aws_subnet" "w20_privatesub1" {
     Name = "Week 20 Private Subnet 1"
   }
 }
-
-# resource "aws_subnet" "w20_privatesub2" {
-#   vpc_id     = aws_vpc.w20_vpc.id
-#   cidr_block = "10.0.2.0/24"
-
-#   tags = {
-#     Name = "Week 20 Private Subnet 2"
-#   }
-# }
 
 resource "aws_subnet" "week20public1" {
   vpc_id                  = aws_vpc.w20_vpc.id
